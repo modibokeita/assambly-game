@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #282726;
+    padding: 75px 55px;
+}
+
+header h1{
+    color: #F9F4DA;
+    
+}
+header p{
+    color: #8E8E8E;
+    margin: .3em 0 1em 0;
+}
+header{
+    
+    text-align: center;
+    font-size: 1.4em;
+}
+.game-status{
+    background-color: #10A95B;
+    padding: 1.2em;
+    color: #F9F4DA;
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: 5px;
+
+}
+.game-status span{
+    display: block;
+}
