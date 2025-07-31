@@ -44,6 +44,17 @@ header{
     background-color: #EC5D49;
     color: #F9F4DA;
 }
+.farewell-text{
+    background-color: purple;
+    color: white;
+    font-size: 1.5rem;
+    font-style: italic;
+    padding: 1.3em;
+    text-align: center;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+}
 .game-status span{
     display: block;
 }
@@ -54,6 +65,7 @@ header{
     margin: 3em auto;
     gap: .3em;
     justify-content: center;
+    position: relative;
 }
 .lang{
     padding: 1em;
@@ -124,4 +136,11 @@ div.lang.lost::before {
     cursor: pointer;
     background-color: #11B5E5;
     border-radius: 5px;
+}
+.lost-icon{
+    position: absolute;
+    top: 0px;
+    right: 180px;
+    font-size: 8rem;
+
 }

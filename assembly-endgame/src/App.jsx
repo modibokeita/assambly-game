@@ -1,17 +1,21 @@
 import { languages } from './languages'
 import { useState } from 'react'
 import clsx from 'clsx';
+import { getFarewellText } from './utils';
+import { useWindowSize } from 'react-use'
+import Confetti from 'react-confetti'
 import './index.css'
+
 
 function App() {
   const [currentWord, setCurrentWord] = useState("react")
   const [guessedLetters, setGuessedLetters] = useState([])
+  const [lastWrongLetter, setLastWrongLetter] = useState(null)
+  const { width, height } = useWindowSize()
+  const wrongGuessCount =
+    guessedLetters.filter(letter => !currentWord.includes(letter)).length
 
-   
-  const wrongGuessCount = 
-  guessedLetters.filter(letter => !currentWord.includes(letter)).length
-
-  const isGameLost = wrongGuessCount >= languages.length -1
+  const isGameLost = wrongGuessCount >= languages.length - 1
   const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
   const isGameOver = isGameLost || isGameWon
 
@@ -62,6 +66,11 @@ function App() {
       setGuessedLetters(prevGuessed => {
         return prevGuessed.includes(letter) ? prevGuessed : [...prevGuessed, letter]
       })
+      if (!currentWord.includes(letter)) {
+        setLastWrongLetter(letter)
+      } else {
+        setLastWrongLetter(null)
+      }
     }
 
     const gameStatusClass = clsx("inial-status", {
@@ -74,6 +83,22 @@ function App() {
       setGuessedLetters([])
       // setCurrentWord()
     }
+    function renderFarewellText() {
+      if (!lastWrongLetter) return null;
+
+      const priorWrongLetters = guessedLetters
+      .filter(letter => !currentWord.includes(letter) && letter !== lastWrongLetter)
+      .length
+      const lostLanguage = languages
+      .filter(lang => lang.name !== "Assembly")
+      const justErasedLanguage = lostLanguage[priorWrongLetters]
+      if (!justErasedLanguage) return null;
+      return (
+        <p className='farewell-text'>
+          {getFarewellText(justErasedLanguage.name)}
+        </p>
+      )
+    }
 
   return (
     <>
@@ -84,12 +109,17 @@ function App() {
         </p>
       </header>
       <main>
-         <section className={gameStatusClass}>
+        {isGameWon && <Confetti width={width} height={height} />}
+         <section  className={gameStatusClass}>
+          {!isGameOver && guessedLetters.length > 0 && renderFarewellText()}
           {isGameWon && <h2>You win! <span>well done!🎉</span></h2>}
           {isGameLost && <h2>You lose! <span>Better start learning Assembly 😢</span></h2>}
         </section>
         <section className='lang-section'>
           {languageElements}
+        {isGameLost && <div className="lost-icon">
+            <span role="img" aria-label="lost">💀</span>
+          </div>}
         </section>
         <section className='word'>
           {guessedWordElements}
