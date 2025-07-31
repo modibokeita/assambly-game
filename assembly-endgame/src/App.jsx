@@ -4,11 +4,13 @@ import clsx from 'clsx';
 import { getFarewellText } from './utils';
 import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'
+import { words } from './words';
+import { getRandomWord } from './utils';
 import './index.css'
 
 
 function App() {
-  const [currentWord, setCurrentWord] = useState("react")
+  const [currentWord, setCurrentWord] = useState(() => getRandomWord(words))
   const [guessedLetters, setGuessedLetters] = useState([])
   const [lastWrongLetter, setLastWrongLetter] = useState(null)
   const { width, height } = useWindowSize()

@@ -17,3 +17,8 @@ export function getFarewellText(language) {
     const randomIndex = Math.floor(Math.random() * options.length);
     return options[randomIndex];
 }
+
+export function getRandomWord(words) {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    return words[randomIndex];
+}
