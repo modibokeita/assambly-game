@@ -44,10 +44,15 @@ function App() {
       </button>
     )
   })
+
   const guessedWordElements = currentWord.split("").map((letter, index) => {
+    
     return (
-       <span key={index}>
-        {guessedLetters.includes(letter) ? letter.toUpperCase() : ""}
+       <span key={index} className={ !guessedLetters.includes(letter) ? "hidden-letter" : ""}>
+        {
+        guessedLetters.includes(letter) ? letter.toUpperCase() 
+        : isGameOver ? letter.toUpperCase() 
+        : ""}
         </span>
     )
   })
@@ -83,7 +88,7 @@ function App() {
 
     function restartGame() {
       setGuessedLetters([])
-      // setCurrentWord()
+      setCurrentWord(getRandomWord(words))
     }
     function renderFarewellText() {
       if (!lastWrongLetter) return null;

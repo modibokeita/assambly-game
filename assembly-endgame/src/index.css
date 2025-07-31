@@ -144,3 +144,6 @@ div.lang.lost::before {
     font-size: 8rem;
 
 }
+.word >.hidden-letter{
+    color: red;
+}
