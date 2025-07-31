@@ -5,7 +5,7 @@
 }
 body{
     background-color: #282726;
-    padding: 75px 55px;
+    padding: 20px 55px;
 }
 
 header h1{
@@ -21,15 +21,107 @@ header{
     text-align: center;
     font-size: 1.4em;
 }
+
 .game-status{
     background-color: #10A95B;
-    padding: 1.2em;
     color: #F9F4DA;
+    padding: 1.3em;
     text-align: center;
     font-size: 1.1rem;
     border-radius: 5px;
-
+    max-width: 600px;
+    margin: 0 auto;
+}
+.inial-status{
+    padding: 1.3em;
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.lost-status{
+    background-color: #EC5D49;
+    color: #F9F4DA;
 }
 .game-status span{
     display: block;
+}
+.lang-section{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 500px;
+    margin: 3em auto;
+    gap: .3em;
+    justify-content: center;
+}
+.lang{
+    padding: 1em;
+    position: relative;
+}
+div.lang.lost::before {
+    content: "💀";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 0.85rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.word span{
+    color: #fff;
+    font-size: 1.5rem;
+    background-color: #323232;
+    padding: .7em 1.2em;
+    border-bottom: 1px solid #F9F4DA;
+}
+.word{
+    display: flex;
+    gap: .2em;
+    justify-content: center;
+}
+.keyboard{
+    margin: 4em 0;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    gap: 5px;
+    margin: 3em auto;
+}
+.keyboard-btn{
+    padding: 1.5em;
+    background-color: #FCBA29;
+    border: 1px solid #D7D7D7;
+    color: #1E1E1E;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.keyboard-btn:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.correct {
+    background-color: #10A95B;
+}
+.incorrect{
+    background-color: #EC5D49;
+}
+.restart-btn{
+    display: flex;
+    margin: 0 auto;
+    width: 200px;
+    padding: 1em 2.1em;
+    font-size: 1.3rem;
+    border: none;
+    font-weight: bold;
+    color: #1E1E1E;
+    cursor: pointer;
+    background-color: #11B5E5;
+    border-radius: 5px;
 }
